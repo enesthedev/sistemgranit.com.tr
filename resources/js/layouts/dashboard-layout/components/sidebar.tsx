@@ -18,7 +18,7 @@ import { SubNavigation } from './sub-navigation';
 const navItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
+        href: route('dashboard.index'),
         icon: LayoutGrid,
     },
 ];
@@ -43,7 +43,7 @@ export function Sidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/dashboard" prefetch>
+                            <Link href={route('dashboard.index')} prefetch>
                                 <Logo />
                             </Link>
                         </SidebarMenuButton>

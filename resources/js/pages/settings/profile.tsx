@@ -14,7 +14,7 @@ import SettingsLayout from '@/layouts/settings-layout';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Profile settings',
-        href: '/settings/profile',
+        href: route('dashboard.profile.edit'),
     },
 ];
 
@@ -34,7 +34,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        patch(route('profile.update'), {
+        patch(route('dashboard.profile.update'), {
             preserveScroll: true,
         });
     };
