@@ -1,16 +1,7 @@
 import Logo from '@/components/logo';
-import {
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    Sidebar as UISidebar,
-} from '@/components/ui/sidebar';
+import { SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuItem, Sidebar as UISidebar } from '@/components/ui/sidebar';
 import { Menu as UserMenu } from '@/features/user/components/menu';
 import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
 import { Navigation } from './navigation';
 import { SubNavigation } from './sub-navigation';
@@ -42,11 +33,7 @@ export function Sidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
-                            <Link href={route('dashboard.index')} prefetch>
-                                <Logo />
-                            </Link>
-                        </SidebarMenuButton>
+                        <Logo variant="icon" />
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>

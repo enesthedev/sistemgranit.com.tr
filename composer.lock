@@ -1086,16 +1086,16 @@
         },
         {
             "name": "enesthedev/translated-routes",
-            "version": "3.1.2",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/enesthedev/translated-routes.git",
-                "reference": "fd4c03a8eaec1cc23b5dd62019e9b9b522e683d2"
+                "reference": "8b0a0dfda46a21df423dbcc37637c2af33e161f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/enesthedev/translated-routes/zipball/fd4c03a8eaec1cc23b5dd62019e9b9b522e683d2",
-                "reference": "fd4c03a8eaec1cc23b5dd62019e9b9b522e683d2",
+                "url": "https://api.github.com/repos/enesthedev/translated-routes/zipball/8b0a0dfda46a21df423dbcc37637c2af33e161f6",
+                "reference": "8b0a0dfda46a21df423dbcc37637c2af33e161f6",
                 "shasum": ""
             },
             "require": {
@@ -1106,11 +1106,11 @@
             "require-dev": {
                 "larastan/larastan": "^3.0",
                 "laravel/pint": "^1.14",
-                "nunomaduro/collision": "^8.8",
-                "orchestra/testbench": "^10.0.0||^9.0.0",
-                "pestphp/pest": "^4.0",
-                "pestphp/pest-plugin-arch": "^4.0",
-                "pestphp/pest-plugin-laravel": "^4.0",
+                "nunomaduro/collision": "^8.8||^9.0",
+                "orchestra/testbench": "^9.0.0||^10.0.0",
+                "pestphp/pest": "^3.0||^4.0",
+                "pestphp/pest-plugin-arch": "^3.0||^4.0",
+                "pestphp/pest-plugin-laravel": "^3.0||^4.0",
                 "phpstan/extension-installer": "^1.4",
                 "phpstan/phpstan-deprecation-rules": "^2.0",
                 "phpstan/phpstan-phpunit": "^2.0",
@@ -1132,8 +1132,7 @@
                     "src/helpers.php"
                 ],
                 "psr-4": {
-                    "Enes\\TranslatedRoutes\\": "src/",
-                    "Enes\\TranslatedRoutes\\Database\\Factories\\": "database/factories/"
+                    "Enes\\TranslatedRoutes\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1162,7 +1161,7 @@
             ],
             "support": {
                 "issues": "https://github.com/enesthedev/translated-routes/issues",
-                "source": "https://github.com/enesthedev/translated-routes/tree/3.1.2"
+                "source": "https://github.com/enesthedev/translated-routes/tree/3.2.0"
             },
             "funding": [
                 {
@@ -1170,7 +1169,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-02T13:39:11+00:00"
+            "time": "2025-11-02T20:15:40+00:00"
         },
         {
             "name": "fruitcake/php-cors",
