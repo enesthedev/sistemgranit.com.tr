@@ -16,7 +16,7 @@ export function Menu() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size="lg" className="group text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent">
+                <SidebarMenuButton size="xl" className="group rounded-xl border text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent">
                     <OnelineProfile user={auth.user} />
                     <ChevronsUpDown className="ml-auto size-4" />
                 </SidebarMenuButton>

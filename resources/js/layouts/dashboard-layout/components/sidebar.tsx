@@ -2,38 +2,33 @@ import Logo from '@/components/logo';
 import { SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuItem, Sidebar as UISidebar } from '@/components/ui/sidebar';
 import { Menu as UserMenu } from '@/features/user/components/menu';
 import { type NavItem } from '@/types';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { LayoutPanelLeft } from 'lucide-react';
 import { Navigation } from './navigation';
 import { SubNavigation } from './sub-navigation';
 
 const navItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Başlangıç',
         href: route('dashboard.index'),
-        icon: LayoutGrid,
+        icon: LayoutPanelLeft,
     },
 ];
 
 const footerNavItems: NavItem[] = [
-    {
+    /**{
         title: 'Repository',
         href: 'https://github.com/laravel/react-starter-kit',
         icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
-    },
+    },**/
 ];
 
 export function Sidebar() {
     return (
-        <UISidebar collapsible="icon" variant="inset">
+        <UISidebar collapsible="offcanvas" className="dark" variant="inset">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <Logo variant="icon" />
+                        <Logo variant="catalog" iconSize="lg" className="pointer-events-none my-2" />
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
