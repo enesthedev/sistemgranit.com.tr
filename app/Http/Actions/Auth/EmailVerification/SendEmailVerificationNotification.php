@@ -1,17 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Actions\Auth\EmailVerification;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class EmailVerificationNotificationController extends Controller
+class SendEmailVerificationNotification extends Controller implements HasMiddleware
 {
-    /**
-     * Send a new email verification notification.
-     */
-    public function store(Request $request): RedirectResponse
+    public static function middleware(): array
+    {
+        return [
+            'throttle:6,1',
+        ];
+    }
+
+    public function __invoke(Request $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
             return redirect()->intended(route('dashboard.index', absolute: false));
@@ -22,3 +27,4 @@ class EmailVerificationNotificationController extends Controller
         return back()->with('status', 'verification-link-sent');
     }
 }
+

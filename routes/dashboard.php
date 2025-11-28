@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\Settings\PasswordController;
-use App\Http\Controllers\Settings\ProfileController;
+use App\Http\Actions\Settings\Password\ChangePassword;
+use App\Http\Actions\Settings\Password\ShowPasswordEditPage;
+use App\Http\Actions\Settings\Profile\DeleteAccount;
+use App\Http\Actions\Settings\Profile\ShowProfileEditPage;
+use App\Http\Actions\Settings\Profile\UpdateProfile;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,20 +19,20 @@ Route::translateGroup([
         ->name('index')
         ->translate();
 
-    Route::get('profile', [ProfileController::class, 'edit'])
+    Route::get('profile', ShowProfileEditPage::class)
         ->name('profile.edit')
         ->translate();
 
-    Route::patch('profile', [ProfileController::class, 'update'])
+    Route::patch('profile', UpdateProfile::class)
         ->name('profile.update')
         ->translate();
 
-    Route::delete('profile', [ProfileController::class, 'destroy'])
+    Route::delete('profile', DeleteAccount::class)
         ->name('profile.destroy')
         ->translate();
 
-    Route::get('change-password', [PasswordController::class, 'edit'])->name('password.edit');
-    Route::put('change-password', [PasswordController::class, 'update'])->middleware('throttle:6,1')->name('password.update');
+    Route::get('change-password', ShowPasswordEditPage::class)->name('password.edit');
+    Route::put('change-password', ChangePassword::class)->name('password.update');
 
     Route::get('appearance', function () {
         return Inertia::render('settings/appearance');

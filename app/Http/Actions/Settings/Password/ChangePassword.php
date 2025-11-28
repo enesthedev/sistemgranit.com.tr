@@ -1,29 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Actions\Settings\Password;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Support\Facades\Password;
 
-class PasswordController extends Controller
+class ChangePassword extends Controller implements HasMiddleware
 {
-    /**
-     * Show the user's password settings page.
-     */
-    public function edit(): Response
+    public static function middleware(): array
     {
-        return Inertia::render('settings/password');
+        return [
+            'throttle:6,1',
+        ];
     }
 
-    /**
-     * Update the user's password.
-     */
-    public function update(Request $request): RedirectResponse
+    public function __invoke(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'current_password' => ['required', 'current_password'],
@@ -37,3 +32,4 @@ class PasswordController extends Controller
         return back();
     }
 }
+

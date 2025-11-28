@@ -1,16 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Actions\Auth\EmailVerification;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class VerifyEmailController extends Controller
+class VerifyEmail extends Controller implements HasMiddleware
 {
-    /**
-     * Mark the authenticated user's email address as verified.
-     */
+    public static function middleware(): array
+    {
+        return [
+            'signed',
+            'throttle:6,1',
+        ];
+    }
+
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
@@ -22,3 +28,4 @@ class VerifyEmailController extends Controller
         return redirect()->intended(route('dashboard.index', absolute: false).'?verified=1');
     }
 }
+

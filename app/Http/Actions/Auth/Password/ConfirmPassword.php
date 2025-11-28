@@ -1,29 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Actions\Auth\Password;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use Inertia\Inertia;
-use Inertia\Response;
 
-class ConfirmablePasswordController extends Controller
+class ConfirmPassword extends Controller implements HasMiddleware
 {
-    /**
-     * Show the confirm password page.
-     */
-    public function show(): Response
+    public static function middleware(): array
     {
-        return Inertia::render('auth/confirm-password');
+        return [
+            'throttle:6,1',
+        ];
     }
 
-    /**
-     * Confirm the user's password.
-     */
-    public function store(Request $request): RedirectResponse
+    public function __invoke(Request $request): RedirectResponse
     {
         if (! Auth::guard('web')->validate([
             'email' => $request->user()->email,
@@ -39,3 +34,4 @@ class ConfirmablePasswordController extends Controller
         return redirect()->intended(route('dashboard.index', absolute: false));
     }
 }
+
